@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Числа, кратні 5 та прості числа</title>
+</head>
+<body>
+    <script>
+        let number;
+        
+        while (true) {
+            const input = prompt("Введіть ціле число для пошуку кратних 5:");
+            number = parseInt(input);
+            if (!isNaN(number) && Number.isInteger(number)) {
+                break;
+            } else {
+                alert("Будь ласка, введіть ціле число.");
+            }
+        }
+
+        const multiplesOfFive = [];
+        for (let i = 0; i <= number; i++) {
+            if (i % 5 === 0) {
+                multiplesOfFive.push(i);
+            }
+        }
+
+        if (multiplesOfFive.length > 0) {
+            console.log("Числа, кратні 5:", multiplesOfFive.join(", "));
+        } else {
+            console.log("Sorry, no numbers");
+        }
+    </script>
+
+    <script>
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        let m, n;
+
+        while (true) {
+            const inputM = prompt("Введіть перше ціле число (m):");
+            const inputN = prompt("Введіть друге ціле число (n):");
+            m = parseInt(inputM);
+            n = parseInt(inputN);
+
+            if (!isNaN(m) && Number.isInteger(m) && !isNaN(n) && Number.isInteger(n)) {
+                const start = Math.min(m, n);
+                const end = Math.max(m, n);
+                const primeNumbers = [];
+
+                for (let i = start; i <= end; i++) {
+                    if (isPrime(i)) {
+                        primeNumbers.push(i);
+                    }
+                }
+
+                if (primeNumbers.length > 0) {
+                    console.log(`Прості числа в діапазоні від ${start} до ${end}:`, primeNumbers.join(", "));
+                } else {
+                    console.log(`У діапазоні від ${start} до ${end} простих чисел не знайдено.`);
+                }
+                break;
+            } else {
+                alert("Будь ласка, введіть два цілих числа.");
+            }
+        }
+    </script>
+</body>
+</html>
